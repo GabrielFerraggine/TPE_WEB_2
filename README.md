@@ -5,3 +5,5 @@ Luego la segunda tabla "Heladerias" incluye la direccion,
 fecha de asociacion. 
 
 Autores: Facundo Nahuel Ferreiro Zunino y Gabriel Ferraggine
+
+![image](https://github.com/GabrielFerraggine/TPE_WEB_2/blob/main/Diagrama.png)
