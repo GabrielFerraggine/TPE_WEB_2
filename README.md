@@ -1,7 +1,10 @@
-El dominio consiste en la tabla "Helados" la cual
-incluye diferentes sabores, su cantidad, precio de costo
+El dominio consiste en un registro de un stock de helados.
+
+La tabla "Helados" incluye diferentes sabores, 
+su subcategoria correspondiente, su cantidad, precio de costo
 y precio venta; ademas de incluir la heladeria de origen.
-Luego la segunda tabla "Heladerias" incluye la direccion,
+
+La segunda tabla "Heladerias" incluye el nombre de la heladeria proveedora, la direccion y la
 fecha de asociacion. 
 
 Autores: Facundo Nahuel Ferreiro Zunino y Gabriel Ferraggine
