@@ -1,0 +1,13 @@
+Compilar
+7.Pondria en duda que el editar funcione
+1.Revisar lo del select dinamico para elegir la heladeria al agregar un helado o leer la lista
+9.Actualizar el readme
+10.Comentar todo (ya comentado model y controllers)
+11.Revisar la existencia o no del admin
+
+extras:
+2.Sacar el showError de donde esta.
+3.Mejorar las solicitudes del model 
+4.Revisar la lectura de las imagenes
+5.Cambiar las solicitudes de app
+6.Cuestiones de interfaz (Hacerlo un poco mas vistoso)

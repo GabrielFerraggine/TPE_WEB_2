@@ -10,3 +10,5 @@ fecha de asociacion.
 Autores: Facundo Nahuel Ferreiro Zunino y Gabriel Ferraggine
 
 ![image](https://github.com/GabrielFerraggine/TPE_WEB_2/blob/main/Diagrama.png)
+
+aclarar que al borrar una heladeria tambien se borran todos los helados asociados
