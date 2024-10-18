@@ -1,15 +1,12 @@
-<?php require 'template/layout/header.phtml'?>
-<?php $icecreams = $icecreams[0]; 
-      $iceCreamParlor = $iceCreamParlor[0];
-?>
+<?php require 'templates/layout/header.phtml'?>
 <ul class="list-group">
       <li class="list-group-item">
       <!--muestro todos los items incluida la imagen teniendo en cuenta ENT_QUOTES para prevenir errores en comillas simples-->
-      <b><?= htmlspecialchars($iceCreams->Nombre) ?></b> | <b><?= htmlspecialchars($iceCreams->Subcategorias) ?></b> | <b><?= htmlspecialchars($iceCreams->Peso) ?></b> | <b><?= htmlspecialchars($iceCreams->Precio_Costo) ?></b> | <b><?= htmlspecialchars($iceCreams->Precio_Venta) ?> | <b><?= htmlspecialchars($iceCreams->ID_Heladerias) ?></b> | <b><?= htmlspecialchars($iceCreams->Foto_Helados, ENT_QUOTES) ?></b>
+      <b><?= htmlspecialchars($iceCreams->Nombre) ?></b> | <b><?=$iceCreams->Subcategorias ?></b> | <b><?= htmlspecialchars($iceCreams->Peso) ?></b> | <b><?= htmlspecialchars($iceCreams->Precio_Costo) ?></b> | <b><?= htmlspecialchars($iceCreams->Precio_Venta) ?> | <figure><?= htmlspecialchars($iceCreams->Foto_Helados, ENT_QUOTES) ?><figure>
       </li>
       <p>Ice creamparlor<p>
       <li>
          <b><?= htmlspecialchars($iceCreamParlor->Nombre) ?></b> | <b><? htmlspecialchars($iceCreamParlor->Direccion)?></b> | <b><? htmlspecialchars($iceCreamParlor->Fecha_Asociacion) ?></b>
       </li>
 </ul>
-<?php require 'template/layout/footer.phtml'?>
+<?php require 'templates/layout/footer.phtml'?>

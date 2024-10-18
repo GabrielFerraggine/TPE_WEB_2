@@ -1,5 +1,5 @@
 <?php
-require_once './app/views/errorView.php';
+require_once './app/view/ErrorView.php';
 
 class ErrorController {
     private $view;

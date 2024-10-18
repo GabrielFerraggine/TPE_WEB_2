@@ -1,13 +1,11 @@
 <?php
-
-require_once 'app/models/model.php';
+require_once './app/model/model.php';
 
 class ModelUsuario extends Model {
 
-    public function getByUser($nombre) {
-        $query = $this->db->prepare('SELECT * FROM nombre WHERE user = ?');
-        $query->execute([$nombre]);
-
+    public function getByUser($admins) {
+        $query = $this->db->prepare('SELECT * FROM `admins` WHERE `nombre` = ?');
+        $query->execute([$admins]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
 }

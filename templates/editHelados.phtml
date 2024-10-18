@@ -1,5 +1,5 @@
-<?php require 'template/layout/header.phtml' ?>
-<form action="add" method="POST">
+<?php require 'templates/layout/header.phtml' ?>
+<form action="editIceCream" method="POST">
     <label>Ice cream parlor id
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Ice cream parlor id" aria-label="Username"  name="id_heladeria" aria-describedby="basic-addon1">
@@ -38,6 +38,7 @@
             <input type="text" class="form-control" placeholder="Id of heladeria" aria-label="Username"  name="id_heladeria" aria-describedby="basic-addon1">
         </div>
     </label>
+    <button type="submit" class="btn btn-primary">Edit</button>
     <!-- leer las posiblidades (nombre/id) -->
 </form>
-<?php require 'template/layout/footer.phtml' ?>
+<?php require 'templates/layout/footer.phtml' ?>

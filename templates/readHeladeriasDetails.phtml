@@ -1,11 +1,10 @@
-<?php require 'template/layout/header.phtml' ?>
-<?php $iceCreamParlor = $iceCreamParlor[0]; ?>
+<?php require 'templates/layout/header.phtml' ?>
 <ul class="list-group">
-    <b><?= htmlspecialchars($iceCreamParlor->Nombre) ?></b> | <b><?= htmlspecialchars($iceCreamParlor->Direccion) ?></b> | <b><?= htmlspecialchars($iceCreamParlor->Fecha_Asociacion) ?></b> | <b><?= htmlspecialchars($iceCreamParlor->Foto_Heladerias, ENT_QUOTES) ?></b>
+    <b><?= htmlspecialchars($iceCreamParlor->Nombre) ?></b><b><?= htmlspecialchars($iceCreamParlor->Direccion) ?></b><b><?= htmlspecialchars($iceCreamParlor->Fecha_Asociacion) ?></b><b><?= htmlspecialchars($iceCreamParlor->Foto_Heladerias, ENT_QUOTES) ?></b>
     <?php foreach ($iceCreams as $icecream): ?>
       <li class="list-group-item">
         <b><?= htmlspecialchars($icecream->Nombre) ?></b> | <b><?= htmlspecialchars($icecream->Peso) ?></b> | <b><?= htmlspecialchars($icecream->Precio_Venta) ?></b>
       </li>
     <?php endforeach ?> 
 </ul>
-<?php require 'template/layout/footer.phtml' ?>
+<?php require 'templates/layout/footer.phtml' ?>

@@ -1,42 +1,44 @@
 <?php
-require_once './app/views/loginView.php';
-require_once './app/models/modelUsuario.php';
-require_once './app/helpers/auth.helper.php';
+require_once './app/view/loginView.php';
+require_once './app/model/modelUsuario.php';
+require_once './app/helper/auth.helper.php';
 
-class LoginController {
+class LoginController
+{
     private $view;
     private $model;
 
-    function __construct() {
+    function __construct()
+    {
         $this->model = new ModelUsuario();
         $this->view = new LoginView();
     }
 
-    public function showLogin() {
+    public function showLogin()
+    {
         $this->view->showLogin();
     }
-    public function auth() {
-        $nombre = $_POST['nombre'];
+    public function auth()
+    {
+        $usuario = $_POST['usuario'];
         $password = $_POST['password'];
-
-        if (empty($nombre) || empty($password)) {
-            $this->view->showLogin('Faltan completar datos');
+        if (empty($usuario) || empty($password)) {
+            $this->view->showLogin('Please complete the form');
             return;
         }
+        $user = $this->model->getByUser($usuario);
+        if ($user && password_verify($password, $user->contraseña)) {
 
-        $user = $this->model->getByUser($nombre);
-        if ($user && password_verify($password, $user-> Password)) {
             AuthHelper::login($user);
-            
-            header('Location: ' . BASE_URL);
+            header('Location: ' . BASE_URL . 'showIceCream');
         } else {
-            $this->view->showLogin('Usuario inválido');
+            $this->view->showLogin('Invalid user');
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         AuthHelper::logout();
-        header('Location: ' . BASE_URL);    
+        header('Location: ' . BASE_URL . 'showIceCream');
     }
 }
-?>

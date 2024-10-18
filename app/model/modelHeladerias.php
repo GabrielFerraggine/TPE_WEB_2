@@ -1,15 +1,15 @@
 <?php
-class modelheladerias extends model{
+class modelheladerias extends Model{
     //inserta los datos de un nuevo helado en la db
     public function insertIceCreamParlor($name_heladeria, $address, $association_date, $illustrative_image) {
-        $query = $this->db->prepare('INSERT INTO `helados` (`Nombre`, `Direccion`, `Fecha_Asociacion`, `illustrative_image`) VALUES
-        (?, ? , ? , ?)');
-        $query->execute();
+        $query = $this->db->prepare('INSERT INTO `heladerias` (`Nombre`, `Direccion`, `Fecha_Asociacion`, `Foto_Heladerias`) 
+        VALUES (?, ? , ? , ?)');
+        $query->execute([$name_heladeria, $address, $association_date, $illustrative_image]);
     }
     //solicita una heladeria a la db por id
-    public function getIceCreamParlor($id) {
-        $query = $this->db->prepare('SELECT * FROM heladerias WHERE id = ?');
-        $query->execute([$id]);   
+    public function getIceCreamParlor($ID_Heladerias) {
+        $query = $this->db->prepare('SELECT * FROM heladerias WHERE ID_Heladerias = ?');
+        $query->execute([$ID_Heladerias]);   
         $IceCream = $query->fetch(PDO::FETCH_OBJ);    
         return $IceCream;
     }
@@ -21,14 +21,13 @@ class modelheladerias extends model{
         return $IceCreams;
     }
     //Actualiza una heladeria
-    public function UpdateIceCreamParlor ($id,$name_heladeria, $address, $association_date){
-        $query = $this->db->prepare("UPDATE `heladerias` SET name_headeria = ?, address = ?, association_date = ? WHERE id = ?");
-        $query->execute([$name_heladeria, $address, $association_date, $id]);
+    public function UpdateIceCreamParlor ($ID_Heladerias, $name_heladeria, $address, $association_date){
+        $query = $this->db->prepare("UPDATE heladerias SET name_heladeria = ?, address = ?, association_date = ? WHERE ID_Heladerias = ?");
+        $query->execute([$ID_Heladerias, $name_heladeria, $address, $association_date]);
     }
     //elimina una heladeria de la db
-    public function RemoveParlor($id) {
-        $query = $this->db->prepare('DELETE FROM heladerias WHERE id = ?');
-        $query->execute([$id]);
+    public function RemoveParlor($ID_Heladerias) {
+        $query = $this->db->prepare('DELETE FROM heladerias WHERE ID_Heladerias = ?');
+        $query->execute([$ID_Heladerias]);
     }
 }
-?>

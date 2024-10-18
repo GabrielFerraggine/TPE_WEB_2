@@ -1,11 +1,12 @@
 <?php require 'templates/layout/header.phtml' ?>
-<form action="add" method="POST">
+<form action="addIceCream" method="POST">
     <label>Ice cream name
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Name of ice cream" aria-label="Username"  name="name_helado" aria-describedby="basic-addon1">
         </div>
     </label>
-    <select class="form-select" aria-label="Default select example">
+    <label>
+    <select name="Subcategory" class="form-select" aria-label="Default select example">
         <option selected>Subcategory</option>
         <option value="Chocolate">Chocolate</option>
         <option value="Crema">Crema</option>
@@ -13,24 +14,25 @@
         <option value="Dulce De Leche">Dulce De Leche</option>
         <option value="Frutales">Frutales</option>
     </select>
+    </label>
     <label>Weight
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Weight" aria-label="Username"  name="weight" aria-describedby="basic-addon1">
+            <input type="number" class="form-control" placeholder="Weight" aria-label="Username"  name="weight" aria-describedby="basic-addon1">
         </div>
     </label>
     <label>Price cost
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Price cost" aria-label="Username"  name="price_cost" aria-describedby="basic-addon1">
+            <input type="number" class="form-control" placeholder="Price cost" aria-label="Username"  name="price_cost" aria-describedby="basic-addon1">
         </div>
     </label>
     <label>Price sale
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Price sale" aria-label="Username"  name="price_sale" aria-describedby="basic-addon1">
+            <input type="number" class="form-control" placeholder="Price sale" aria-label="Username"  name="price_sale" aria-describedby="basic-addon1">
         </div>
     </label>
-    <label>Heladeria id
+    <label>Heladeria
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Id of heladeria" aria-label="Username"  name="id_heladeria" aria-describedby="basic-addon1">
+            <input type="number" class="form-control" placeholder="Id of heladeria" aria-label="Username"  name="id_heladeria" aria-describedby="basic-addon1">
         </div>
     </label>
     <label>Illustrative image
@@ -40,5 +42,6 @@
             </div>
         </figure>
     </label>
+    <button type="submit" class="btn btn-primary">Add</button>
 </form>
 <?php require 'templates/layout/footer.phtml' ?>

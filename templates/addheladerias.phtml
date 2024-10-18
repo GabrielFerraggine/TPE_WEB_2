@@ -1,5 +1,5 @@
-<?php require 'template/layout/header.phtml' ?>
-<form action="edit" method="POST">
+<?php require 'templates/layout/header.phtml' ?>
+<form action="addIceCreamParlor" method="POST">
     <label>Ice cream parlor name
     <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Ice cream parlor name" aria-label="Username"  name="name_heladeria" aria-describedby="basic-addon1">
@@ -12,7 +12,7 @@
     </label>
     <label>Ice cream parlor association date
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Ice cream parlor association date" aria-label="Username"  name="association_date" aria-describedby="basic-addon1">
+        <input type="date" class="form-control" placeholder="Ice cream parlor association date" aria-label="Username"  name="association_date" aria-describedby="basic-addon1">
     </div>
     </label>
     <label>Illustrative image
@@ -22,5 +22,6 @@
             </div>
         </figure>
     </label>
+    <button type="submit" class="btn btn-primary">Add</button>
 </form>
-<?php require 'template/layout/footer.phtml' ?>
+<?php require 'templates/layout/footer.phtml' ?>

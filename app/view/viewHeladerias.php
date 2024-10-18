@@ -4,10 +4,13 @@ class ViewHeladerias {
         require 'app/view/ErrorView.php';
     }
     public function showIceCreamParlor($iceCreamParlor){
-        require 'template/readHeladerias.phtml';
+        require 'templates/readHeladerias.phtml';
     }
     public function showIceCreamParlorDetails($iceCreamParlor, $iceCreams) {
-        require 'template/readHeladeriasDetails.phtml';
+        require 'templates/readHeladeriasDetails.phtml';
+    }
+    public function showAddIceCreamParlor() {
+        require 'templates/addheladerias.phtml';
     }
 }
 ?>

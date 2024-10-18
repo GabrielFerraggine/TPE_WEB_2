@@ -4,6 +4,7 @@
 require_once './app/controllers/controllerHelados.php';
 require_once './app/controllers/controllerHeladerias.php';
 require_once './app/controllers/controllerLogin.php';
+require_once './app/controllers/ErrorController.php';
 
 //url base
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
@@ -23,26 +24,31 @@ $params = explode('/', $action);
 // TABLA DE RUTEO
 switch ($params[0]) {
     case 'showIceCream':
-        if (isset($params[1])) {
-            $controller = new ControllerHelados();
-            $controller->showIceCream($params[1]);
-        } else {
-            $controller = new ErrorController();
-            $controller->showError();
-            break;
-        }
+        $controller = new ControllerHelados();
+        $controller->showIceCream();
+        break;
     case 'showIceCreamParlor':
-        if (isset($params[1])) {
-            $controller = new ControllerHeladerias();
-            $controller->showIceCreamParlor($params[1]);
-            break;
-        } else {
-            $controller = new ErrorController();
-            $controller->showError();
-            break;
-        }
+        $controller = new ControllerHeladerias();
+        $controller->showIceCreamParlor();
+        break;
+    case 'addIceCream':
+        $controller = new ControllerHelados();
+        $controller->addIceCream();
+        break;
+    case 'addIceCreamParlor':
+        $controller = new ControllerHeladerias();
+        $controller->addIceCreamParlor();
+        break; 
+    case 'showAddIceCream':
+        $controller = new ControllerHelados();
+        $controller->showAddIceCream();
+        break;
+    case 'showAddIceCreamParlor':
+        $controller = new ControllerHeladerias();
+        $controller->showAddIceCreamParlor();
+        break;
     case 'detailsIceCream':
-        if(isset($params[1])) {
+        if (isset($params[1])) {
             $controller = new ControllerHelados();
             $controller->detailsIceCream($params[1]);
             break;
@@ -52,7 +58,7 @@ switch ($params[0]) {
             break;
         }
     case 'detailsIceCreamParlor':
-        if(isset($params[1])) {
+        if (isset($params[1])) {
             $controller = new ControllerHeladerias();
             $controller->detailsIceCreamParlor($params[1]);
             break;
@@ -61,6 +67,18 @@ switch ($params[0]) {
             $controller->showError();
             break;
         }
+    case 'showEditIceCream':
+        if (isset($params[1])) {
+            $controller = new ControllerHelados();
+            $controller->showEditIceCream($params[1]);
+            break;
+        }
+    // // // case 'editIceCreamParlor':
+    // // //     if (isset($params[1])) {
+    // // //         $controller = new ControllerHeladerias();
+    // // //         $controller->showEditIceCreamParlor($params[1]);
+    // // //         break;
+    // // //     }
     case 'editIceCream':
         if (isset($params[1])) {
             $controller = new ControllerHelados();
@@ -90,38 +108,29 @@ switch ($params[0]) {
             $controller = new ErrorController();
             $controller->showError();
             break;
-        }    
+        }
     case 'deleteIceCreamParlor':
         if (isset($params[1])) {
             $controller = new ControllerHeladerias();
             $controller->deleteIceCreamParlor($params[1]);
-            break;
-        }
-        else {
-            $controller = new ErrorController();
-            $controller->showError();
-            break;
-        }
-    case 'showLogin':
-        if(isset($params[1])) {
-            $controller = new LoginController();
-            $controller->showLogin($params[1]);
-            break; 
-        }else {
-            $controller = new ErrorController();
-            $controller->showError();
-            break;
-        }
-    case 'logout':
-        if (isset($params[1])) {
-            $controller = new LoginController();
-            $controller->logout($params[1]);
             break;
         } else {
             $controller = new ErrorController();
             $controller->showError();
             break;
         }
+    case 'showLogin':
+        $controller = new LoginController();
+        $controller->showLogin();
+        break;
+    case 'auth':
+        $controller = new LoginController();
+        $controller->auth();
+        break;
+    case 'logout':
+        $controller = new LoginController();
+        $controller->logout();
+        break;
     default:
         $controller = new ErrorController();
         $controller->showError();

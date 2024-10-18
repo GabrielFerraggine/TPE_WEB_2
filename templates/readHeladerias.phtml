@@ -1,15 +1,15 @@
-<?php require 'template/layout/header.phtml' ?>
+<?php require 'templates/layout/header.phtml' ?>
 <ul class="list-group">
   <?php foreach ($iceCreamParlor as $icecream): ?>
       <li class="list-group-item">
         <!--muestro todos los items incluida la imagen teniendo en cuenta ENT_QUOTES para prevenir errores en comillas simples-->
         <b><?= htmlspecialchars($icecream->Nombre) ?></b> | <b><?= htmlspecialchars($icecream->Direccion) ?></b> | <b><?= htmlspecialchars($icecream->Fecha_Asociacion) ?></b> | <b><?= htmlspecialchars($icecream->Foto_Heladerias, ENT_QUOTES) ?></b>
       </li>
-      <?php if(session_status() === PHP_SESSION_ACTIVE) ?> {
-            <a href="UpdateIceCreamParlor/<?= $icecream->ID_Heladerias ?>" type="button" class="btn btn-outline-warning">Edit></a>
-            <a href="RemoveParlor/<?= $icecream->ID_Heladerias ?>" type="button" class="btn btn-outline-danger">Delete</a>
-      }
-      <a href="detailsIceCreamParlor/<?= $icecream->ID_Heladerias?>" type="button" class="btn btn-outline-info">See more></a>
-  <?php endforeach ?> 
+      <?php if(isset($_SESSION['Usuario'])): ?> 
+            <a href="UpdateIceCreamParlor/<?= $icecream->ID_Heladerias ?>" type="button" class="btn btn-outline-warning">Edit</a>
+            <a href="deleteIceCreamParlor/<?= $icecream->ID_Heladerias ?>" type="button" class="btn btn-outline-danger">Delete</a>
+      <?php endif ?>
+      <a href="detailsIceCreamParlor/<?= $icecream->ID_Heladerias?>" type="button" class="btn btn-outline-info">See more</a>
+      <?php endforeach ?> 
 </ul>
-<?php require 'template/layout/footer.phtml' ?>
+<?php require 'templates/layout/footer.phtml' ?>

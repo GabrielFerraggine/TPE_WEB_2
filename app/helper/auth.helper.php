@@ -6,17 +6,14 @@ class AuthHelper {
             session_start();
         }
     }
-
     public static function login($user) {
         AuthHelper::init();
-        $_SESSION['Usuario'] = $user-> User;
+        $_SESSION['Usuario'] = $user-> nombre;
     }
-
     public static function logout() {
         AuthHelper::init();
         session_destroy();
     }
-
     public static function verify() {
         AuthHelper::init();
         if (!isset($_SESSION['USER_ID'])) {
