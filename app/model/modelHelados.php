@@ -22,9 +22,9 @@ class ModelHelados extends Model {
         $query->execute([$id_heladerias]);
     }
     //actualiza un helado en la db
-    public function UpdateIceCreams ($ID_Helados, $name_helado, $name_subcategory, $weight,  $price_cost, $price_sale, $ID_Heladerias){
-        $query = $this->db->prepare("UPDATE helados SET name_helado = ?, name_subcategory = ?, weight = ?, price_cost = ?, price_sale = ?, id_heladerias = ? WHERE id = ?");
-        $query->execute([$ID_Helados ,$name_helado, $name_subcategory, $weight, $price_cost, $price_sale, $ID_Heladerias]);
+    public function updateIceCreams ($ID_Helados, $name_helado, $name_subcategory, $weight,  $price_cost, $price_sale, $ID_Heladerias, $Foto_Helados){
+        $query = $this->db->prepare("UPDATE helados SET nombre = ?, subcategorias = ?, peso = ?, precio_costo = ?, precio_venta = ?, id_heladerias = ?, Foto_Helados = ? WHERE ID_Helados = ?");
+        $query->execute([$name_helado, $name_subcategory, $weight, $price_cost, $price_sale, $ID_Heladerias, $Foto_Helados, $ID_Helados]);
     }
     //devuelve todos los helados de la db
     public function getIceCreams() {
@@ -34,9 +34,9 @@ class ModelHelados extends Model {
         return $IceCreams;
     }
     //devuelve un helado de la db por id
-    public function getIceCream($ID_Helados) {
+    public function getIceCream($id) {
         $query = $this->db->prepare('SELECT * FROM helados WHERE ID_Helados = ?');
-        $query->execute([$ID_Helados]);   
+        $query->execute([$id]);   
         $IceCream = $query->fetch(PDO::FETCH_OBJ);    
         return $IceCream;
     }

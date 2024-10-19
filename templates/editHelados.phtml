@@ -1,44 +1,47 @@
 <?php require 'templates/layout/header.phtml' ?>
-<form action="editIceCream" method="POST">
-    <label>Ice cream parlor id
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ice cream parlor id" aria-label="Username"  name="id_heladeria" aria-describedby="basic-addon1">
-        </div>
-    </label> 
+<form action="editIceCream/<?= $iceCream->ID_Helados ?>" method="POST">
     <label>Ice cream name
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Name of ice cream" aria-label="Username"  name="name_helado" aria-describedby="basic-addon1">
+            <input value="<?= $iceCream->Nombre; ?>" type="text" class="form-control" placeholder="Name of ice cream" aria-label="Username"  name="name_helado" aria-describedby="basic-addon1">
         </div>
     </label>
-    <select class="form-select" aria-label="Default select example">
-        <option selected>Subcategory</option>
-        <option value="Chocolate">Chocolate</option>
-        <option value="Crema">Crema</option>
-        <option value="Crema Especial">Crema Especial</option>
-        <option value="Dulce De Leche">Dulce De Leche</option>
-        <option value="Frutales">Frutales</option>
-    </select>
+    <label>Subcategory
+        <div class="input-group mb-3">
+            <input value="<?= $iceCream->Subcategorias; ?>" type="text" class="form-control" placeholder="Weight" aria-label="Username"  name="subcategory" aria-describedby="basic-addon1">
+        </div>
+    </label>
     <label>Weight
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Weight" aria-label="Username"  name="weight" aria-describedby="basic-addon1">
+            <input value="<?= $iceCream->Peso; ?>" type="number" class="form-control" placeholder="Weight" aria-label="Username"  name="weight" aria-describedby="basic-addon1">
         </div>
     </label>
     <label>Price cost
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Price cost" aria-label="Username"  name="price_cost" aria-describedby="basic-addon1">
+            <input value="<?= $iceCream->Precio_Costo; ?>" type="number" class="form-control" placeholder="Price cost" aria-label="Username"  name="price_cost" aria-describedby="basic-addon1">
         </div>
     </label>
     <label>Price sale
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Price sale" aria-label="Username"  name="price_sale" aria-describedby="basic-addon1">
+            <input value="<?= $iceCream->Precio_Venta; ?>" type="number" class="form-control" placeholder="Price sale" aria-label="Username"  name="price_sale" aria-describedby="basic-addon1">
         </div>
     </label>
-    <label>Heladeria id
+    <label>Heladeria
+        <select name="id_heladeria" class="form-select" aria-label="Default select example">
+            <?php foreach ($IceCreamParlors as $IceCreamParlor): ?>
+                <option value="<?= $IceCreamParlor->ID_Heladerias ?>"
+                <?php if($IceCreamParlor->ID_Heladerias == $iceCream->ID_Heladerias): ?> 
+                    selected
+                <?php endif ?>>
+                    <?= $IceCreamParlor->Nombre ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </label>
+    <label>Ilustrative Image
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Id of heladeria" aria-label="Username"  name="id_heladeria" aria-describedby="basic-addon1">
+            <input value="<?= $iceCream->Foto_Helados; ?>"type="text" class="form-control" placeholder="Ilustrative Image" aria-label="Username"  name="Foto_Helado" aria-describedby="basic-addon1">
         </div>
     </label>
     <button type="submit" class="btn btn-primary">Edit</button>
-    <!-- leer las posiblidades (nombre/id) -->
 </form>
 <?php require 'templates/layout/footer.phtml' ?>

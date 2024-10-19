@@ -6,7 +6,7 @@
         <b><?= htmlspecialchars($icecream->Nombre) ?></b> | <b><?= htmlspecialchars($icecream->Direccion) ?></b> | <b><?= htmlspecialchars($icecream->Fecha_Asociacion) ?></b>
       </li>
       <?php if(isset($_SESSION['Usuario'])): ?> 
-            <a href="UpdateIceCreamParlor/<?= $icecream->ID_Heladerias ?>" type="button" class="btn btn-outline-warning">Edit</a>
+            <a href="showEditIceCreamParlor/<?= $icecream->ID_Heladerias ?>" type="button" class="btn btn-outline-warning">Edit</a>
             <a href="deleteIceCreamParlor/<?= $icecream->ID_Heladerias ?>" type="button" class="btn btn-outline-danger">Delete</a>
       <?php endif ?>
       <a href="detailsIceCreamParlor/<?= $icecream->ID_Heladerias?>" type="button" class="btn btn-outline-info">See more</a>

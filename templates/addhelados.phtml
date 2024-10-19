@@ -7,8 +7,7 @@
     </label>
     <label>Subcategory
     <select name="Subcategory" class="form-select" aria-label="Default select example">
-        <option selected>Chocolate</option>
-        <option value="Chocolate">Chocolate</option>
+        <option value="Chocolate"selected>Chocolate</option>
         <option value="Crema">Crema</option>
         <option value="Crema Especial">Crema Especial</option>
         <option value="Dulce De Leche">Dulce De Leche</option>
@@ -32,11 +31,11 @@
     </label>
     <label>Heladeria
         <select name="id_heladeria" class="form-select" aria-label="Default select example">
-        <?php foreach ($options as $value => $label): ?>
-            <option value="<?= $value ?>" <?= ($value == $default) ? 'selected' : ''; ?>>
-                <?= $label ?>
-            </option>
-        <?php endforeach; ?>
+            <?php foreach ($IceCreamParlors as $IceCreamParlor): ?>
+                <option value="<?= $IceCreamParlor->ID_Heladerias ?>" <?= (3) ? 'selected' : ''; ?>>
+                    <?= $IceCreamParlor->Nombre ?>
+                </option>
+            <?php endforeach; ?>
         </select>
     </label>
     <label>Illustrative image

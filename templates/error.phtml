@@ -1,5 +1,11 @@
 <?php require 'templates/layout/header.phtml' ?>
 <div class='alert alert-danger' role='alert'>
-   <?php echo 'Algo ha salido mal, reintente.' ?>
+
+<?php if($error!=null): ?>
+         <h1> <?php $error ?></h1>
+      <?php else: ?>{
+         <h1>Algo ha salido mal, reintente.</h1>
+      }<?php endif ?>
+?>
 </div> 
 <?php require 'templates/layout/footer.phtml' ?>

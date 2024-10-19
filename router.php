@@ -7,8 +7,7 @@ require_once './app/controllers/controllerLogin.php';
 require_once './app/controllers/ErrorController.php';
 
 //url base
-define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
-
+define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 //Para mantener la session iniciada, antes de manejar los datos
 AuthHelper::init();
 
@@ -73,12 +72,21 @@ switch ($params[0]) {
             $controller->showEditIceCream($params[1]);
             break;
         }
-    // // // case 'editIceCreamParlor':
-    // // //     if (isset($params[1])) {
-    // // //         $controller = new ControllerHeladerias();
-    // // //         $controller->showEditIceCreamParlor($params[1]);
-    // // //         break;
-    // // //     }
+        else {
+            $controller = new ErrorController();
+            $controller->showError();
+            break;
+        }
+    case 'showEditIceCreamParlor':
+        if (isset($params[1])) {
+            $controller = new ControllerHeladerias();
+            $controller->showEditIceCreamParlor($params[1]);
+            break;
+        } else {
+            $controller = new ErrorController();
+            $controller->showError();
+            break;
+        }
     case 'editIceCream':
         if (isset($params[1])) {
             $controller = new ControllerHelados();
@@ -133,6 +141,6 @@ switch ($params[0]) {
         break;
     default:
         $controller = new ErrorController();
-        $controller->showError();
+        $controller->showEspecificError('The action you want to perform is not valid');
         break;
 }

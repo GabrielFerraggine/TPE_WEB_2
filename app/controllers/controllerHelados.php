@@ -2,39 +2,43 @@
 require_once './app/model/modelHelados.php';
 require_once './app/view/viewHelados.php';
 require_once './app/controllers/controllerHeladerias.php';
+require_once './app/controllers/ErrorController.php';
 
 class ControllerHelados {
     private $model;
     private $view;
-    private $controllerParlor;
+    private $error;
     
     public function __construct() {
         $this->model = new modelHelados();  
         $this->view = new viewHelados(); 
+        $this->error = new ErrorController();
     }
     //muestra el formulario para añadir un helado 
     public function showAddIceCream(){
-        return $this->view->showAddIceCream();
+        $heladeriaController = new controllerHeladerias();
+        $iceCreamParlor = $heladeriaController->returnIceCreamParlors();
+        return $this->view->showAddIceCream($iceCreamParlor);
     }
     //agrega un nuevo helado
     public function addIceCream() {
         if(!isset($_POST["name_helado"]) || empty($_POST["name_helado"])) {
-            return $this->view->showError('Please complete the name');
+            return $this->error->showEspecificError('Please complete the name');
         }
         if(!isset($_POST["Subcategory"]) || empty($_POST["Subcategory"])) {
-            return $this->view->showError('Please complete the subcategory');
+            return $this->error->showEspecificError('Please complete the subcategory');
         }
         if(!isset($_POST["weight"]) || empty($_POST["weight"])) {
-            return $this->view->showError('Please complete the weight');
+            return $this->error->showEspecificError('Please complete the weight');
         }
         if(!isset($_POST["price_cost"]) || empty($_POST["price_cost"])) {
-            return $this->view->showError('Please complete the price cost');
+            return $this->error->showEspecificError('Please complete the price cost');
         }
         if(!isset($_POST["price_sale"]) || empty($_POST["price_sale"])) {
-            return $this->view->showError('Please complete the price sale');
+            return $this->error->showEspecificError('Please complete the price sale');
         }
         if(!isset($_POST["id_heladeria"]) || empty($_POST["id_heladeria"])) {
-            return $this->view->showError('Please complete the id');
+            return $this->error->showEspecificError('Please complete the id');
         }
         if(empty($_POST["illustrative_image"])) {
             //se agrega una imagen generica
@@ -56,7 +60,7 @@ class ControllerHelados {
     public function deleteIceCream($id) {
         $iceCream = $this->model->getIceCream($id);
         if (!$iceCream) {
-            return $this->view->showError("The ice cream with id=$id does not exist");
+            return $this->error->showEspecificError("The ice cream with id=$id does not exist");
         }
         $this->model->remove($id);
         header('Location: ' . BASE_URL . 'showIceCream');
@@ -64,25 +68,32 @@ class ControllerHelados {
     public function deleteIceCreams($id_heladeria) {
         $iceCreams = $this->model->getIceCreams($id_heladeria);
         if (!$iceCreams){
-            return $this->view->showError("The ice creams with id=$id_heladeria does not exist");
+            return $this->error->showEspecificError("The ice creams with id=$id_heladeria does not exist");
         }
         $this->model->removes($id_heladeria);
         header('Location: ' . BASE_URL . 'showIceCream'); 
     }
-    //permite editar un helado (excepto la imagen)
+    //permite editar un helado (excepto la imagen y la id propia)
     public function editIceCream($id){
-        $iceCream = $this->model->getIceCream($id);
-
-        if (!$iceCream){
-            return $this->view->showError("the ice creams with id=$id does not exist");
-        }
+        $name_helado = $_POST["name_helado"];
+        $subcategory = $_POST["subcategory"];
+        $weight = $_POST["weight"];
+        $price_cost = $_POST["price_cost"];
+        $price_sale = $_POST["price_sale"];
+        $id_heladeria = $_POST["id_heladeria"];
+        $foto_Helado = $_POST["Foto_Helado"];
+        if (empty($name_helado) || empty($subcategory) || empty($weight) || empty($price_cost) || empty($price_cost) || empty($foto_Helado) || empty($id_heladeria)) {
+            return $this->error->showError();
+        }else{
+            $this-> model->updateIceCreams($id,$name_helado,$subcategory,$weight,$price_cost, $price_sale, $id_heladeria, $foto_Helado);
+        }    
         header('Location: ' . BASE_URL . 'showIceCream');
     }
     //solicita un helado y su heladeria vinculada
     public function detailsIceCream($id){
-        $this->controllerParlor = new controllerHeladerias();  
+        $heladeriaController = new controllerHeladerias(); 
         $IceCream = $this->model->getIceCream($id);
-        $IceCreamParlor = $this->controllerParlor->returnIceCreamParlor($IceCream->ID_Heladerias);
+        $IceCreamParlor = $heladeriaController->returnIceCreamParlor($IceCream->ID_Heladerias);
         return $this->view->showIceCreamDetails($IceCream, $IceCreamParlor);
     }
     //solicita todos los helados
@@ -95,9 +106,11 @@ class ControllerHelados {
         $iceCream = $this->model->detailsIceCreams($id_iceCreamParlor);
         return $iceCream;
     }
-
     public function showEditIceCream ($id) {
-        return $this->view->showEditIceCream($id);
+        $heladeriaController = new controllerHeladerias();
+        $iceCreamParlors = $heladeriaController->returnIceCreamParlors();
+        $iceCream = $this->model->getIceCream($id);
+        return $this->view->showEditIceCream($iceCream, $iceCreamParlors);
     }
 }
 ?>

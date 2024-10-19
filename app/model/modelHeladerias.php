@@ -21,9 +21,9 @@ class modelheladerias extends Model{
         return $IceCreams;
     }
     //Actualiza una heladeria
-    public function UpdateIceCreamParlor ($ID_Heladerias, $name_heladeria, $address, $association_date){
-        $query = $this->db->prepare("UPDATE heladerias SET name_heladeria = ?, address = ?, association_date = ? WHERE ID_Heladerias = ?");
-        $query->execute([$ID_Heladerias, $name_heladeria, $address, $association_date]);
+    public function updateIceCreamParlor ($ID_Heladerias, $name_heladeria, $address, $association_date, $Foto_Heladerias){
+        $query = $this->db->prepare("UPDATE heladerias SET Nombre = ?, Direccion = ?, Fecha_Asociacion = ?, Foto_Heladerias = ? WHERE ID_Heladerias = ?");
+        $query->execute([$name_heladeria, $address, $association_date, $Foto_Heladerias, $ID_Heladerias]);
     }
     //elimina una heladeria de la db
     public function RemoveParlor($ID_Heladerias) {

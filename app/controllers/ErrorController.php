@@ -11,5 +11,9 @@ class ErrorController {
     function showError(){
         $this->view->showError();
     }
+    function showEspecificError($error){
+        $this->view->showEspecificError($error);
+    }
+    
 }
 ?>

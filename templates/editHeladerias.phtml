@@ -1,24 +1,24 @@
 <?php require 'templates/layout/header.phtml' ?>
-<form action="edit" method="POST">
-    <label>Ice cream parlor id
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ice cream parlor id" aria-label="Username"  name="id_heladeria" aria-describedby="basic-addon1">
-        </div>
-    </label>    
+<form action="editIceCreamParlor/<?= $iceCreamParlor->ID_Heladerias ?>" method="POST">  
     <label>Ice cream parlor name
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Ice cream parlor name" aria-label="Username"  name="name_heladeria" aria-describedby="basic-addon1">
+        <input value="<?= $iceCreamParlor->Nombre; ?>" type="text" class="form-control" placeholder="Ice cream parlor name" aria-label="Username"  name="name_heladeria" aria-describedby="basic-addon1">
     </div>
     </label>
     <label>Ice cream parlor address
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Ice cream parlor addres" aria-label="Username"  name="address" aria-describedby="basic-addon1">
+        <input value="<?= $iceCreamParlor->Direccion; ?>" type="text" class="form-control" placeholder="Ice cream parlor addres" aria-label="Username"  name="address" aria-describedby="basic-addon1">
     </div>
     </label>
     <label>Ice cream parlor association date
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Ice cream parlor association date" aria-label="Username"  name="association date" aria-describedby="basic-addon1">
+        <input value="<?= $iceCreamParlor->Fecha_Asociacion; ?>" type="Date" class="form-control" placeholder="Ice cream parlor association date" aria-label="Username"  name="association date" aria-describedby="basic-addon1">
     </div>
+    </label>
+    <label>Ilustrative Image
+        <div class="input-group mb-3">
+            <input value="<?= $iceCreamParlor->Foto_Heladerias; ?>" type="text" class="form-control" placeholder="Ilustrative Image" aria-label="Username"  name="Foto_Heladerias" aria-describedby="basic-addon1">
+        </div>
     </label>
     <button type="submit" class="btn btn-primary">Edit</button>
 </form>
