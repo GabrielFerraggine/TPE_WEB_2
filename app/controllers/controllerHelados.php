@@ -6,6 +6,7 @@ require_once './app/controllers/controllerHeladerias.php';
 class ControllerHelados {
     private $model;
     private $view;
+    private $controllerParlor;
     
     public function __construct() {
         $this->model = new modelHelados();  
@@ -79,10 +80,9 @@ class ControllerHelados {
     }
     //solicita un helado y su heladeria vinculada
     public function detailsIceCream($id){
-        $controllerParlor=null;
-        $this->$controllerParlor = new controllerHeladerias();  
+        $this->controllerParlor = new controllerHeladerias();  
         $IceCream = $this->model->getIceCream($id);
-        $IceCreamParlor = $this->$controllerParlor->returnIceCreamParlor($IceCream->ID_Heladeria);
+        $IceCreamParlor = $this->controllerParlor->returnIceCreamParlor($IceCream->ID_Heladerias);
         return $this->view->showIceCreamDetails($IceCream, $IceCreamParlor);
     }
     //solicita todos los helados

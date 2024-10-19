@@ -5,9 +5,9 @@
             <input type="text" class="form-control" placeholder="Name of ice cream" aria-label="Username"  name="name_helado" aria-describedby="basic-addon1">
         </div>
     </label>
-    <label>
+    <label>Subcategory
     <select name="Subcategory" class="form-select" aria-label="Default select example">
-        <option selected>Subcategory</option>
+        <option selected>Chocolate</option>
         <option value="Chocolate">Chocolate</option>
         <option value="Crema">Crema</option>
         <option value="Crema Especial">Crema Especial</option>
@@ -31,9 +31,13 @@
         </div>
     </label>
     <label>Heladeria
-        <div class="input-group mb-3">
-            <input type="number" class="form-control" placeholder="Id of heladeria" aria-label="Username"  name="id_heladeria" aria-describedby="basic-addon1">
-        </div>
+        <select name="id_heladeria" class="form-select" aria-label="Default select example">
+        <?php foreach ($options as $value => $label): ?>
+            <option value="<?= $value ?>" <?= ($value == $default) ? 'selected' : ''; ?>>
+                <?= $label ?>
+            </option>
+        <?php endforeach; ?>
+        </select>
     </label>
     <label>Illustrative image
         <figure>

@@ -10,7 +10,7 @@ class modelheladerias extends Model{
     public function getIceCreamParlor($ID_Heladerias) {
         $query = $this->db->prepare('SELECT * FROM heladerias WHERE ID_Heladerias = ?');
         $query->execute([$ID_Heladerias]);   
-        $IceCream = $query->fetch(PDO::FETCH_OBJ);    
+        $IceCream = $query->fetch(PDO::FETCH_OBJ);  
         return $IceCream;
     }
     //solicita toda la tabla de Heladeria
