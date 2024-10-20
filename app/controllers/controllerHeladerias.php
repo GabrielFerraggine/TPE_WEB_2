@@ -15,7 +15,8 @@ class ControllerHeladerias {
         $this->view = new viewHeladerias();
         $this->controllerIce = new controllerHelados();
         $this->error = new ErrorController();
-     }
+    }
+    //muestra el formulario para agregar una heladeria
     public function showAddIceCreamParlor(){
         return $this->view->showAddIceCreamParlor();
     }
@@ -88,6 +89,7 @@ class ControllerHeladerias {
         $iceCreams = $this->controllerIce->returnIceCream($id_iceCreamParlor);
         return $this->view->showIceCreamParlorDetails($iceCreamParlor, $iceCreams);
     }
+    //solicita la heladeria al editar
     public function showEditIceCreamParlor ($id){
         $iceCreamParlor = $this->model->getIceCreamParlor($id);
         return $this->view->showEditIceCreamParlor($iceCreamParlor);

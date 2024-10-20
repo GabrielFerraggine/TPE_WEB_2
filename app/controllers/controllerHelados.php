@@ -106,6 +106,7 @@ class ControllerHelados {
         $iceCream = $this->model->detailsIceCreams($id_iceCreamParlor);
         return $iceCream;
     }
+    //solicita el helado a editar y su respectiva heladeria correspondiente
     public function showEditIceCream ($id) {
         $heladeriaController = new controllerHeladerias();
         $iceCreamParlors = $heladeriaController->returnIceCreamParlors();
