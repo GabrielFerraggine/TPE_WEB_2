@@ -7,10 +7,12 @@ y precio venta, incluye la heladeria de origen y una imagen ilustrativa del hela
 La segunda tabla "Heladerias" incluye el nombre de la heladeria proveedora, la direccion y la
 fecha de asociacion y una imagen ilustrativa de la marca.
 
-###Nota importante: borrar un heladeria tambien borrara todos sus helados asociados. 
-
 Autores: Facundo Nahuel Ferreiro Zunino y Gabriel Ferraggine
 
 ![image](https://github.com/GabrielFerraggine/TPE_WEB_2/blob/main/Diagrama.png)
 
-el router se buguea a veces e intercambia de lugar los params, no tenemos idea porque, es simplemente cerrar la pestaña y entrar de nuevo.
+En la carpeta de "database" se incluye el archivo de la base de datos, este debe ser importado con la opcion que
+ofrece el servidor sql. El acceso de administrador es:
+            user: "webadmin" y password: "admin".
+
+###Nota importante: Borrar una heladeria tambien borrara todos sus helados asociados. 
